@@ -15,15 +15,8 @@
  *   limitations under the License.
  *
  */
+package org.serverless.workflow.api.interfaces;
 
-package org.serverless.workflow.api;
+public interface Condition {
 
-import org.serverless.workflow.api.events.TriggerEvent;
-
-public interface ExpressionEvaluator {
-
-    String getName();
-
-    boolean evaluate(String expression,
-                     TriggerEvent triggerEvent);
 }

@@ -25,11 +25,11 @@
       "type": "string",
       "description": "Workflow owner"
     },
-    "starts-at": {
+    "startAt": {
       "type": "string",
       "description": "Starts at state name"
     },
-    "exec-status": {
+    "execStatus": {
       "type": "string",
       "enum": [
         "Success",
@@ -42,12 +42,12 @@
     "metadata": {
       "$ref": "metadata/metadata.json"
     },
-    "trigger-defs": {
+    "eventTriggers": {
       "type": "array",
-      "description": "Trigger Definitions",
+      "description": "Event Trigger Definitions",
       "items": {
         "type": "object",
-        "$ref": "events/triggerevent.json"
+        "$ref": "events/eventtrigger.json"
       }
     },
     "states": {
@@ -89,7 +89,7 @@
   },
   "required": [
     "name",
-    "starts-at",
+    "startAt",
     "states"
   ]
 }

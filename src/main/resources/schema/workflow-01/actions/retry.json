@@ -7,19 +7,19 @@
       "type": "string",
       "description": "Specifies the matching value for the result"
     },
-    "retry-interval": {
+    "interval": {
       "type": "string",
       "description": "Specifies retry interval (ISO 8601 format)"
     },
-    "max-retry": {
+    "maxRetries": {
       "type": "integer",
       "default": "0",
       "minimum": 0,
-      "description": "Specifies the max retry"
+      "description": "Specifies the maximum number of retries"
     },
-    "next-state": {
+    "nextState": {
       "type": "string",
-      "description": "Name of the next state to transition to when exceeding max-retry limit",
+      "description": "Name of the next state to transition to when exceeding the maxRetries limit",
       "minLength": 1
     },
     "metadata": {

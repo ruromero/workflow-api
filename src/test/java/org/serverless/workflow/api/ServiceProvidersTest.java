@@ -18,28 +18,14 @@
 
 package org.serverless.workflow.api;
 
-import java.util.Map;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.serverless.workflow.api.testproviders.TestExpressionEvaluator;
 import org.serverless.workflow.api.testproviders.TestWorkflowManager;
 import org.serverless.workflow.api.testproviders.TestWorkflowValidator;
-import org.serverless.workflow.spi.ExpressionEvaluatorProvider;
 import org.serverless.workflow.spi.WorkflowManagerProvider;
 import org.serverless.workflow.spi.WorkflowValidatorProvider;
 
 public class ServiceProvidersTest {
-
-    @Test
-    public void testExpressionEvaluatorProvider() {
-        Map<String, ExpressionEvaluator> evaluators = ExpressionEvaluatorProvider.getInstance().get();
-        Assertions.assertNotNull(evaluators);
-        Assertions.assertEquals(1,
-                                evaluators.size());
-        Assertions.assertNotNull(evaluators.get("test"));
-        Assertions.assertTrue(evaluators.get("test") instanceof TestExpressionEvaluator);
-    }
 
     @Test
     public void testWorkflowManagerProvider() {

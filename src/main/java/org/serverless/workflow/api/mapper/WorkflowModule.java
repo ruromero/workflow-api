@@ -20,26 +20,24 @@ package org.serverless.workflow.api.mapper;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.serverless.workflow.api.WorkflowPropertySource;
-import org.serverless.workflow.api.choices.DefaultChoice;
-import org.serverless.workflow.api.deserializers.ChoiceDeserializer;
-import org.serverless.workflow.api.deserializers.DefaultChoiceOperatorDeserializer;
+import org.serverless.workflow.api.choices.SingleCondition;
+import org.serverless.workflow.api.deserializers.ConditionDeserializer;
 import org.serverless.workflow.api.deserializers.DefaultStateTypeDeserializer;
-import org.serverless.workflow.api.deserializers.EventActionModeDeserializer;
 import org.serverless.workflow.api.deserializers.ExtensionDeserializer;
 import org.serverless.workflow.api.deserializers.OperationStateActionModeDeserializer;
+import org.serverless.workflow.api.deserializers.SingleConditionOperatorDeserializer;
 import org.serverless.workflow.api.deserializers.StateDeserializer;
 import org.serverless.workflow.api.deserializers.StringValueDeserializer;
-import org.serverless.workflow.api.events.Event;
-import org.serverless.workflow.api.interfaces.Choice;
+import org.serverless.workflow.api.interfaces.Condition;
 import org.serverless.workflow.api.interfaces.Extension;
 import org.serverless.workflow.api.interfaces.State;
 import org.serverless.workflow.api.serializers.DelayStateSerializer;
 import org.serverless.workflow.api.serializers.EventStateSerializer;
+import org.serverless.workflow.api.serializers.EventTriggerSerializer;
 import org.serverless.workflow.api.serializers.ExtensionSerializer;
 import org.serverless.workflow.api.serializers.OperationStateSerializer;
 import org.serverless.workflow.api.serializers.ParallelStateSerializer;
 import org.serverless.workflow.api.serializers.SwitchStateSerializer;
-import org.serverless.workflow.api.serializers.TriggerEventSerializer;
 import org.serverless.workflow.api.serializers.WorkflowSerializer;
 import org.serverless.workflow.api.states.DefaultState;
 import org.serverless.workflow.api.states.DelayState;
@@ -74,19 +72,17 @@ public class WorkflowModule extends SimpleModule {
         addSerializer(new OperationStateSerializer());
         addSerializer(new ParallelStateSerializer());
         addSerializer(new SwitchStateSerializer());
-        addSerializer(new TriggerEventSerializer());
+        addSerializer(new EventTriggerSerializer());
         addSerializer(extensionSerializer);
     }
 
     private void addDefaultDeserializers() {
         addDeserializer(State.class,
                         new StateDeserializer(workflowPropertySource));
-        addDeserializer(Choice.class,
-                        new ChoiceDeserializer());
+        addDeserializer(Condition.class,
+                        new ConditionDeserializer());
         addDeserializer(String.class,
                         new StringValueDeserializer(workflowPropertySource));
-        addDeserializer(Event.ActionMode.class,
-                        new EventActionModeDeserializer(workflowPropertySource));
         addDeserializer(OperationState.ActionMode.class,
                         new OperationStateActionModeDeserializer(workflowPropertySource));
         addDeserializer(DefaultState.Type.class,
@@ -101,8 +97,8 @@ public class WorkflowModule extends SimpleModule {
                         new DefaultStateTypeDeserializer(workflowPropertySource));
         addDeserializer(SwitchState.Type.class,
                         new DefaultStateTypeDeserializer(workflowPropertySource));
-        addDeserializer(DefaultChoice.Operator.class,
-                        new DefaultChoiceOperatorDeserializer(workflowPropertySource));
+        addDeserializer(SingleCondition.Operator.class,
+                        new SingleConditionOperatorDeserializer(workflowPropertySource));
         addDeserializer(Extension.class, extensionDeserializer);
     }
 

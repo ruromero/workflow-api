@@ -28,16 +28,6 @@ public interface WorkflowManager {
 
     WorkflowManager setMarkup(String markup);
 
-    void setExpressionEvaluator(ExpressionEvaluator expressionEvaluator);
-
-    void setDefaultExpressionEvaluator(String evaluatorName);
-
-    ExpressionEvaluator getExpressionEvaluator();
-
-    ExpressionEvaluator getExpressionEvaluator(String evaluatorName);
-
-    void resetExpressionValidator();
-
     WorkflowValidator getWorkflowValidator();
 
     String toJson();

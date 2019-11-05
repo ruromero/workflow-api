@@ -18,7 +18,6 @@
 
 package org.serverless.workflow.api.testproviders;
 
-import org.serverless.workflow.api.ExpressionEvaluator;
 import org.serverless.workflow.api.Workflow;
 import org.serverless.workflow.api.WorkflowManager;
 import org.serverless.workflow.api.WorkflowValidator;
@@ -39,31 +38,6 @@ public class TestWorkflowManager implements WorkflowManager {
     @Override
     public WorkflowManager setMarkup(String markup) {
         return this;
-    }
-
-    @Override
-    public void setExpressionEvaluator(ExpressionEvaluator expressionEvaluator) {
-
-    }
-
-    @Override
-    public void setDefaultExpressionEvaluator(String evaluatorName) {
-
-    }
-
-    @Override
-    public ExpressionEvaluator getExpressionEvaluator() {
-        return null;
-    }
-
-    @Override
-    public ExpressionEvaluator getExpressionEvaluator(String evaluatorName) {
-        return null;
-    }
-
-    @Override
-    public void resetExpressionValidator() {
-
     }
 
     @Override

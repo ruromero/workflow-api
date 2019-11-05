@@ -52,11 +52,6 @@ public class TestWorkflowValidator implements WorkflowValidator {
     }
 
     @Override
-    public void setStrictValidationEnabled(boolean strictValidationEnabled) {
-
-    }
-
-    @Override
     public void reset() {
 
     }

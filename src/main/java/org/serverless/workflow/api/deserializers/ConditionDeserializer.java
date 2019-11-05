@@ -25,48 +25,42 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import org.serverless.workflow.api.choices.AndChoice;
-import org.serverless.workflow.api.choices.DefaultChoice;
-import org.serverless.workflow.api.choices.NotChoice;
-import org.serverless.workflow.api.choices.OrChoice;
-import org.serverless.workflow.api.choices.SingleChoice;
-import org.serverless.workflow.api.interfaces.Choice;
+import org.serverless.workflow.api.choices.AndCondition;
+import org.serverless.workflow.api.choices.NotCondition;
+import org.serverless.workflow.api.choices.OrCondition;
+import org.serverless.workflow.api.choices.SingleCondition;
+import org.serverless.workflow.api.interfaces.Condition;
 
-public class ChoiceDeserializer extends StdDeserializer<Choice> {
+public class ConditionDeserializer extends StdDeserializer<Condition> {
 
-    public ChoiceDeserializer() {
+    public ConditionDeserializer() {
         this(null);
     }
 
-    public ChoiceDeserializer(Class<?> vc) {
+    public ConditionDeserializer(Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public Choice deserialize(JsonParser jp,
-                              DeserializationContext ctxt)
-            throws IOException {
+    public Condition deserialize(JsonParser jp,
+                                 DeserializationContext ctxt)
+        throws IOException {
 
         ObjectMapper mapper = (ObjectMapper) jp.getCodec();
         JsonNode node = jp.getCodec().readTree(jp);
 
         if (node.get("and") != null) {
             return mapper.treeToValue(node,
-                                      AndChoice.class);
+                                      AndCondition.class);
         } else if (node.get("not") != null) {
             return mapper.treeToValue(node,
-                                      NotChoice.class);
+                                      NotCondition.class);
         } else if (node.get("or") != null) {
             return mapper.treeToValue(node,
-                                      OrChoice.class);
+                                      OrCondition.class);
         } else {
-            if(node.get("next-state") != null) {
-                return mapper.treeToValue(node,
-                                          SingleChoice.class);
-            } else {
-                return mapper.treeToValue(node,
-                                          DefaultChoice.class);
-            }
+            return mapper.treeToValue(node,
+                                      SingleCondition.class);
         }
     }
 }

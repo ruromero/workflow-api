@@ -34,7 +34,5 @@ public interface WorkflowValidator {
 
     void setSchemaValidationEnabled(boolean schemaValidationEnabled);
 
-    void setStrictValidationEnabled(boolean strictValidationEnabled);
-
     void reset();
 }

@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "javaType": "org.serverless.workflow.api.choices.NotCondition",
+  "javaInterfaces": [
+    "org.serverless.workflow.api.interfaces.Condition"
+  ],
+  "description": "Not Condition",
+  "properties": {
+    "not": {
+      "type": "object",
+      "description": "Not condition",
+      "existingJavaType": "org.serverless.workflow.api.interfaces.Condition"
+    }
+  },
+  "required": [
+    "not"
+  ]
+}

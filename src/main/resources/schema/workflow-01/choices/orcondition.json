@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "javaType": "org.serverless.workflow.api.choices.OrCondition",
+  "javaInterfaces": [
+    "org.serverless.workflow.api.interfaces.Condition"
+  ],
+  "description": "Or Condition",
+  "properties": {
+    "or": {
+      "type": "array",
+      "description": "List of conditions",
+      "items": {
+        "type": "object",
+        "existingJavaType": "org.serverless.workflow.api.interfaces.Condition"
+      }
+    }
+  },
+  "required": [
+    "or"
+  ]
+}

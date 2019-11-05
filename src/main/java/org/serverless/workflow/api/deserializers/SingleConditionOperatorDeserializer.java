@@ -24,31 +24,31 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import org.serverless.workflow.api.WorkflowPropertySource;
-import org.serverless.workflow.api.events.Event;
+import org.serverless.workflow.api.choices.SingleCondition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EventActionModeDeserializer extends StdDeserializer<Event.ActionMode> {
+public class SingleConditionOperatorDeserializer extends StdDeserializer<SingleCondition.Operator> {
 
     private WorkflowPropertySource context;
-    private static Logger logger = LoggerFactory.getLogger(EventActionModeDeserializer.class);
+    private static Logger logger = LoggerFactory.getLogger(SingleConditionOperatorDeserializer.class);
 
-    public EventActionModeDeserializer() {
-        this(Event.ActionMode.class);
+    public SingleConditionOperatorDeserializer() {
+        this(SingleCondition.Operator.class);
     }
 
-    public EventActionModeDeserializer(WorkflowPropertySource context) {
-        this(Event.ActionMode.class);
+    public SingleConditionOperatorDeserializer(WorkflowPropertySource context) {
+        this(SingleCondition.Operator.class);
         this.context = context;
     }
 
-    public EventActionModeDeserializer(Class<?> vc) {
+    public SingleConditionOperatorDeserializer(Class<?> vc) {
         super(vc);
     }
 
     @Override
-    public Event.ActionMode deserialize(JsonParser jp,
-                                        DeserializationContext ctxt) throws IOException {
+    public SingleCondition.Operator deserialize(JsonParser jp,
+                                                DeserializationContext ctxt) throws IOException {
 
         String value = jp.getText();
         if (context != null) {
@@ -56,16 +56,16 @@ public class EventActionModeDeserializer extends StdDeserializer<Event.ActionMod
                 String result = context.getPropertySource().getProperty(value);
 
                 if (result != null) {
-                    return Event.ActionMode.fromValue(result);
+                    return SingleCondition.Operator.fromValue(result);
                 } else {
-                    return Event.ActionMode.fromValue(jp.getText());
+                    return SingleCondition.Operator.fromValue(jp.getText());
                 }
             } catch (Exception e) {
                 logger.info("Exception trying to evaluate property: " + e.getMessage());
-                return Event.ActionMode.fromValue(jp.getText());
+                return SingleCondition.Operator.fromValue(jp.getText());
             }
         } else {
-            return Event.ActionMode.fromValue(jp.getText());
+            return SingleCondition.Operator.fromValue(jp.getText());
         }
     }
 }

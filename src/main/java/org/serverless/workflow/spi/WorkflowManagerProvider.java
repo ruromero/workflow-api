@@ -53,7 +53,6 @@ public class WorkflowManagerProvider {
         // always reset the manager validator and expression validator
         if (workflowManager.getWorkflowValidator() != null) {
             workflowManager.getWorkflowValidator().reset();
-            workflowManager.resetExpressionValidator();
         }
         return workflowManager;
     }

@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "javaType": "org.serverless.workflow.api.events.TriggerEvent",
+  "javaType": "org.serverless.workflow.api.events.EventTrigger",
   "properties": {
     "name": {
       "type": "string",
@@ -15,7 +15,7 @@
       "type": "string",
       "description": "CloudEvent type"
     },
-    "correlation-token": {
+    "correlationToken": {
       "type": "string",
       "description": "Path used for event correlation"
     },

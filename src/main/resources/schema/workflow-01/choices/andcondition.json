@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "javaType": "org.serverless.workflow.api.choices.AndCondition",
+  "javaInterfaces": [
+    "org.serverless.workflow.api.interfaces.Condition"
+  ],
+  "description": "And Condition",
+  "properties": {
+    "and": {
+      "type": "array",
+      "description": "List of conditions",
+      "items": {
+        "type": "object",
+        "existingJavaType": "org.serverless.workflow.api.interfaces.Condition"
+      }
+    }
+  },
+  "required": [
+    "and"
+  ]
+}

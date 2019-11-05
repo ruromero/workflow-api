@@ -26,7 +26,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.serverless.workflow.api.Workflow;
-import org.serverless.workflow.api.events.TriggerEvent;
+import org.serverless.workflow.api.events.EventTrigger;
 import org.serverless.workflow.api.interfaces.Extension;
 import org.serverless.workflow.api.interfaces.State;
 
@@ -51,31 +51,31 @@ public class WorkflowSerializer extends StdSerializer<Workflow> {
         gen.writeStringField("name",
                              workflow.getName());
 
-        if(workflow.getDescription() != null && !workflow.getDescription().isEmpty()) {
+        if (workflow.getDescription() != null && !workflow.getDescription().isEmpty()) {
             gen.writeStringField("description",
                                  workflow.getDescription());
         }
 
-        if(workflow.getVersion() != null && !workflow.getVersion().isEmpty()) {
+        if (workflow.getVersion() != null && !workflow.getVersion().isEmpty()) {
             gen.writeStringField("version",
                                  workflow.getVersion());
         }
 
-        if(workflow.getOwner() != null && !workflow.getOwner().isEmpty()) {
+        if (workflow.getOwner() != null && !workflow.getOwner().isEmpty()) {
             gen.writeStringField("owner",
                                  workflow.getOwner());
         }
 
-        if (workflow.getStartsAt() != null && !workflow.getStartsAt().isEmpty()) {
-            gen.writeObjectField("starts-at",
-                                 workflow.getStartsAt());
+        if (workflow.getStartAt() != null && !workflow.getStartAt().isEmpty()) {
+            gen.writeObjectField("startAt",
+                                 workflow.getStartAt());
         } else {
-            gen.writeObjectField("starts-at",
+            gen.writeObjectField("startAt",
                                  "");
         }
 
         if (workflow.getExecStatus() != null) {
-            gen.writeObjectField("exec-status",
+            gen.writeObjectField("execStatus",
                                  workflow.getExecStatus().value());
         }
 
@@ -84,10 +84,10 @@ public class WorkflowSerializer extends StdSerializer<Workflow> {
                                  workflow.getMetadata());
         }
 
-        if (workflow.getTriggerDefs() != null && !workflow.getTriggerDefs().isEmpty()) {
-            gen.writeArrayFieldStart("trigger-defs");
-            for (TriggerEvent triggerEvent : workflow.getTriggerDefs()) {
-                gen.writeObject(triggerEvent);
+        if (workflow.getEventTriggers() != null && !workflow.getEventTriggers().isEmpty()) {
+            gen.writeArrayFieldStart("eventTriggers");
+            for (EventTrigger eventTrigger : workflow.getEventTriggers()) {
+                gen.writeObject(eventTrigger);
             }
             gen.writeEndArray();
         }
@@ -103,7 +103,7 @@ public class WorkflowSerializer extends StdSerializer<Workflow> {
             gen.writeEndArray();
         }
 
-        if(workflow.getExtensions() != null && !workflow.getExtensions().isEmpty()) {
+        if (workflow.getExtensions() != null && !workflow.getExtensions().isEmpty()) {
             gen.writeArrayFieldStart("extensions");
             for (Extension extension : workflow.getExtensions()) {
                 gen.writeObject(extension);
@@ -119,8 +119,8 @@ public class WorkflowSerializer extends StdSerializer<Workflow> {
             MessageDigest salt = MessageDigest.getInstance("SHA-256");
 
             salt.update(UUID.randomUUID()
-                                .toString()
-                                .getBytes("UTF-8"));
+                            .toString()
+                            .getBytes("UTF-8"));
             String digest = bytesToHex(salt.digest());
             return digest;
         } catch (Exception e) {

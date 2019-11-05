@@ -30,11 +30,11 @@ public class ObjectMapperTest {
 
     private static final String testDelayState = "{\n" +
             "  \"name\": \"test-wf\",\n" +
-            "  \"starts-at\": \"delay-state\",\n" +
+            "  \"startAt\": \"delay-state\",\n" +
             "  \"states\": [\n" +
             "    {\n" +
             "      \"name\": \"delay-state\",\n" +
-            "      \"time-delay\": \"PT5S\",\n" +
+            "      \"timeDelay\": \"PT5S\",\n" +
             "      \"type\": \"DELAY\",\n" +
             "      \"end\": true\n" +
             "    }\n" +
@@ -43,11 +43,11 @@ public class ObjectMapperTest {
 
     private static final String testDelayStatePropertySource = "{\n" +
             "  \"name\": \"test-wf\",\n" +
-            "  \"starts-at\": \"delay-state\",\n" +
+            "  \"startAt\": \"delay-state\",\n" +
             "  \"states\": [\n" +
             "    {\n" +
             "      \"name\": \"delaystate.name\",\n" +
-            "      \"time-delay\": \"delaystate.timedelay\",\n" +
+            "      \"timeDelay\": \"delaystate.timedelay\",\n" +
             "      \"type\": \"delaystate.type\",\n" +
             "      \"end\": true\n" +
             "    }\n" +
@@ -56,19 +56,19 @@ public class ObjectMapperTest {
 
     private static final String testDelayStateYaml =
             "name: test-wf\n" +
-            "starts-at: delay-state\n" +
+            "startAt: delay-state\n" +
             "states:\n" +
             "- name: delay-state\n" +
-            "  time-delay: PT5S\n" +
+            "  timeDelay: PT5S\n" +
             "  type: DELAY\n" +
             "  end: true";
 
     private static final String testDelayStateYamlPropertySource =
             "name: test-wf\n" +
-            "starts-at: delay-state\n" +
+            "startAt: delay-state\n" +
             "states:\n" +
             "- name: delaystate.name\n" +
-            "  time-delay: delaystate.timedelay\n" +
+            "  timeDelay: delaystate.timedelay\n" +
             "  type: delaystate.type\n" +
             "  end: true";
 

@@ -7,9 +7,9 @@
       "type": "string",
       "description": "Branch name"
     },
-    "starts-at": {
+    "startAt": {
       "type": "string",
-      "description": "Starts at state name"
+      "description": "Name of the state to start from"
     },
     "states": {
       "type": "array",
@@ -19,7 +19,7 @@
         "existingJavaType": "org.serverless.workflow.api.interfaces.State"
       }
     },
-    "wait-for-completion": {
+    "waitForCompletion": {
       "type": "boolean",
       "default": false,
       "description": "Flow must wait for this branch to finish before continuing"
@@ -30,8 +30,8 @@
   },
   "required": [
     "name",
-    "starts-at",
+    "startAt",
     "states",
-    "wait-for-completion"
+    "waitForCompletion"
   ]
 }

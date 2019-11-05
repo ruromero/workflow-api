@@ -1,8 +1,10 @@
 {
   "type": "object",
-  "javaType": "org.serverless.workflow.api.choices.DefaultChoice",
-  "javaInterfaces": ["org.serverless.workflow.api.interfaces.Choice"],
-  "description": "Default Choice",
+  "javaType": "org.serverless.workflow.api.choices.SingleCondition",
+  "javaInterfaces": [
+    "org.serverless.workflow.api.interfaces.Condition"
+  ],
+  "description": "Single Condition",
   "properties": {
     "path": {
       "type": "string",
