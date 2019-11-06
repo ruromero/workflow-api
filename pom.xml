@@ -13,14 +13,11 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <java.version>1.8</java.version>
-    <junit.jupiter.version>5.4.0</junit.jupiter.version>
+    <junit.jupiter.version>5.5.2</junit.jupiter.version>
     <jsonschema2pojo.version>1.0.1</jsonschema2pojo.version>
-    <commons.lang.version>3.9</commons.lang.version>
-    <fasterxml.jackson.version>2.9.10</fasterxml.jackson.version>
+    <fasterxml.jackson.version>2.10.0</fasterxml.jackson.version>
     <validation.version>2.0.2</validation.version>
     <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-    <hamcrest.version>1.3</hamcrest.version>
-    <jsonassert.version>1.5.0</jsonassert.version>
     <json.schema.validation.version>1.11.1</json.schema.validation.version>
     <slf4j.version>1.7.28</slf4j.version>
   </properties>
@@ -70,18 +67,6 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>${junit.jupiter.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.hamcrest</groupId>
-      <artifactId>hamcrest-library</artifactId>
-      <version>${hamcrest.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.skyscreamer</groupId>
-      <artifactId>jsonassert</artifactId>
-      <version>${jsonassert.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
